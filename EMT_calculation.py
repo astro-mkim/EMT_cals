@@ -49,7 +49,7 @@ print (" If you want to see the references, -> please press <0>")
 
 answer = input ("\n")
 
-if answer == '0' or answer == '1' or answer == '2' or answer == '3' or answer == '4':
+if answer == '0' or answer == '1' or answer == '2' or answer == '3' or answer == '4' or answer == '5'  or answer == '6':
     answer = int(answer)
 
     if answer == 1:
@@ -156,7 +156,7 @@ while (answer_interpolation != 0) and (answer_interpolation != 1) and (answer_in
 
 if (answer == 1 or 2 or 3 or 4 or 5 or 6):
     print (" Please provide the name of the file for the refractive index of the matrix.")
-    print (" File must contain three columns, e.g., wavelength [mu], n, and k")
+    print (" File must contain three columns, e.g., wavelength (or frequency), n, and k")
     file_matrix = input ("")
     print ("")
 
@@ -165,7 +165,7 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
     file_inclusion = input ("")
     print ("")
     
-    if (answer == 1 or 2 or 3 or 4 or 5):
+    if (answer != 6):
 
         print (" Please provide the volume fraction of the inclusions.")
         print (" Caution: 0 < volume fraction < 1") 
@@ -174,14 +174,14 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
 
     if (answer == 6):
         
-        print ("Hollow sphere equivalent model needs a specific parameter")
-        print ("Thickness: 1 - ((r_in)**3/(r_out)**3), where")
-        print ("r_in is inner and r_out is outer radius of model")
-        print ("In this model, the volume fraction is determined by the thickness.")
-        print ("Please provide inner radius in unit same to outer radius")
+        print (" Hollow sphere equivalent model needs a specific parameter")
+        print (" Thickness: 1 - ((r_in)**3/(r_out)**3), where")
+        print (" r_in is inner and r_out is outer radius of model")
+        print (" In this model, the volume fraction is determined by the thickness.")
+        print (" Please provide inner radius in unit same to outer radius")
         r_in = float(input (""))
         print ("")
-        print ("Please provide inner radius in unit same to inner radius")
+        print (" Please provide inner radius in unit same to inner radius")
         r_out = float(input (""))
         vol_fr = 1 - (r_in**3/r_out**3)
         print ("")
