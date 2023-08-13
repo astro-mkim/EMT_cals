@@ -164,18 +164,17 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
     print (" File must contain three columns, e.g., wavelength (or frequency), n, and k")
     file_inclusion = input ("")
     print ("")
+    
+    if (answer == 1 or 2 or 3 or 4 or 5):
 
-    print (" Please provide the volume fraction of the inclusions.")
-    print (" Caution: 0 < volume fraction < 1") 
-    vol_fr = float(input (""))
-    print ("")
-
-    print (" Please  provide the name of the output file.")
-    file_output = input ("")
-    print ("")
+        print (" Please provide the volume fraction of the inclusions.")
+        print (" Caution: 0 < volume fraction < 1") 
+        vol_fr = float(input (""))
+        print ("")
 
     if (answer == 6):
-        print ("Hollow sphere equivalent model needs one more specific parameter")
+        
+        print ("Hollow sphere equivalent model needs a specific parameter")
         print ("Thickness: 1 - ((r_in)**3/(r_out)**3), where")
         print ("r_in is inner and r_out is outer radius of model")
         print ("In this model, the volume fraction is determined by the thickness.")
@@ -186,6 +185,11 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
         r_out = float(input (""))
         vol_fr = 1 - (r_in**3/r_out**3)
         print ("")
+
+    print (" Please  provide the name of the output file.")
+    file_output = input ("")
+    print ("")
+
         
 # Interpolation first
 
