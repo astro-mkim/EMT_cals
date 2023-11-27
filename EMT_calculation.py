@@ -207,7 +207,7 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
             k_m.append(float(line1[2]))
 
     for filename in glob.glob(file_inclusion):
-        print ("2. Name of the file for the refractive index of the matrix: ", file_inclusion)
+        print ("2. Name of the file for the refractive index of the inclusion: ", file_inclusion)
         f2 = open (file_inclusion, "r")
 
         for line in f2:
@@ -251,10 +251,13 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
 
         if answer == 1:
             e_eff = (e_m * (1 + 2*vol_fr*((e_in - e_m)/(e_in + 2*e_m)))/(1 - vol_fr *((e_in - e_m)/(e_in + 2*e_m)))) #Maxwell Garnett
+            e_eff = e_m*(1 + (3*vol_fr*((e_in - e_m)/(e_in + 2*e_m))/(1 - vol_fr*((e_in - e_m)/(e_in + 2*e_m))))) #Maxwell Garnett
 
         if answer == 2:
-            e_eff = (1/4*((3*vol_fr(e_in - e_m)) + 2*e_m - e_in + sqrt((((1-3*vol_fr)**2)*(e_in**2)) +
-                    (2*(2+9*vol_fr - 9*(vol_fr**2))*e_in*e_m) + (((3*vol_fr - 2)**2) *e_m**2)))) #Bruggeman
+            # e_eff = (1/4*((3*vol_fr(e_in - e_m)) + 2*e_m - e_in + sqrt((((1-3*vol_fr)**2)*(e_in**2)) +
+            #         (2*(2+9*vol_fr - 9*(vol_fr**2))*e_in*e_m) + (((3*vol_fr - 2)**2) *e_m**2)))) #Bruggeman
+            e_eff = -1/2*(-(3*vol_fr-1)*e_in/2-(3*vol_fr-2)*e_m/2)+(((-(3*vol_fr-1)*e_in/2-(3*vol_fr-2)*e_m/2)/2)**2+e_m*e_in/2)**1/2 #Bruggeman Harald
+            # e_eff = 1/4*((2*e_m-e_in-3*vol_fr*e_m+3*vol_fr*e_in)-sqrt((2*e_m-e_in-3*vol_fr*e_m+3*vol_fr*e_in)**2+8*e_in*e_m))
 
         if answer == 3:
             e_eff = e_in**vol_fr + e_m**(1-vol_fr) #Lichtenecker
@@ -263,7 +266,7 @@ if (answer == 1 or 2 or 3 or 4 or 5 or 6):
             e_eff = (vol_fr*e_in**1/3+(1-vol_fr)*e_m**1/3)**3 # Looyenga
 
         if answer == 5:
-           e_eff = ((2*(vol_fr*e_i + (1-vol_fr)*e_m)**2 + e_in*e_m))/((1+vol_fr)*e_in + (2-vol_fr)*e_m) #    Monecke model 
+           e_eff = ((2*(vol_fr*e_in + (1-vol_fr)*e_m)**2 + e_in*e_m))/((1+vol_fr)*e_in + (2-vol_fr)*e_m) #    Monecke model 
         
         if answer == 6:
            e_eff = e_in * ((3-2*vol_fr)*e_m + 2*f*e_in)/(vol_fr*e_m + (3-vol_fr)*e_in) #    Hollow sphere equivalent model
